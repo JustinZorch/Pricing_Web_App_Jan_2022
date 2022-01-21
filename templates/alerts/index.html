@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Alerts</h1>
+</header>
+<section>
+    <div class="list-group mb-3">
+        {% for alert in alerts %}
+            <div class="list-group-item">
+                <h4>{{ alert.name }}</h4>
+                <p>
+                    <a href="{{ alert.item.url}}">{{ alert.item_id }}</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary" href="{{ url_for('alerts.new_alert') }}">
+        Create New
+    </a>
+</section>
+{% endblock %}
+
+## url_for is in flask and jinja2
+## generates a web address foe the endpoint of the whats in the string
