@@ -1,11 +1,14 @@
+import os
+
 import pymongo
+import os
 import certifi
 from pymongo import MongoClient
 from typing import Dict
 
 class Database:
 
-    URI = "mongodb+srv://justin:Justin123@microblog.fcu71.mongodb.net/test"
+    URI = os.environ.get('URI')
     DATABASE = None
 
     @staticmethod
