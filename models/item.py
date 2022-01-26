@@ -11,13 +11,12 @@ from models.model import Model
 # eq=False so objects can't be compared agaisnt each other
 @dataclass(eq=False)
 class Item(Model):
-    collection: str = field(init=False, default='Itmes')
+    collection: str = field(init=False, default='Items')
     url: str
     tag_name: str
     query: Dict
     price: float = field(default=None)
     _id: str = field(default_factory=lambda: uuid.uuid4().hex)
-
 
     def load_price(self) -> float:
         response = requests.get(self.url, headers={
@@ -25,13 +24,13 @@ class Item(Model):
         })
         content = response.content
         soup = BeautifulSoup(content, "html.parser")
+        print(soup)
         element = soup.find(self.tag_name, self.query)
         string_price = element.text.strip()
 
         pattern = re.compile(r"(\d+,?\d*\.\d\d)")
         match = pattern.search(string_price)
         found_price = match.group(1)
-        print(found_price)
         without_commas = found_price.replace(",", "")
         self.price = float(without_commas)
         return self.price
@@ -41,6 +40,7 @@ class Item(Model):
             "_id": self._id,
             "url": self.url,
             "tag_name": self.tag_name,
+            "price": self.price,
             "query": self.query
         }
 

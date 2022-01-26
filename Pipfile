@@ -9,6 +9,9 @@ beautifulsoup4 = "*"
 requests = "*"
 pymongo = "*"
 dnspython = "*"
+passlib = "*"
+python-dotenv = "*"
+uwsgi = '*'
 
 [dev-packages]
 

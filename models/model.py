@@ -23,6 +23,8 @@ class Model(metaclass=ABCMeta):
     def remove_from_mongo(self):
         Database.remove(self.collection, {"_id": self._id})
 
+
+
     @classmethod
     def get_by_id(cls: Type[T], _id: str) -> T:
         return cls.find_one_by("_id", _id)

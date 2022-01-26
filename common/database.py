@@ -5,7 +5,7 @@ from typing import Dict
 
 class Database:
 
-    URI = ###
+    URI = "mongodb+srv://justin:Justin123@microblog.fcu71.mongodb.net/test"
     DATABASE = None
 
     @staticmethod

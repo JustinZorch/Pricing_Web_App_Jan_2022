@@ -12,7 +12,7 @@ class Store(Model):
     url_prefix: str
     tag_name: str
     query: Dict
-    _uid: str = field(default_factory=lambda: uuid.uuid4().hex)
+    _id: str = field(default_factory=lambda: uuid.uuid4().hex)
 
     def json(self) -> Dict:
         return {
